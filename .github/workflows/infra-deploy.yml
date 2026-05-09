@@ -10,6 +10,9 @@ on:
             - "terraform/**"
     workflow_dispatch:
 
+permissions:
+    contents: read
+
 jobs:
     plan:
         name: Tofu Plan
