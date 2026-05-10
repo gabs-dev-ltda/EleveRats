@@ -45,6 +45,7 @@ public interface ITokenService
     /// <param name="jti">The unique JWT identifier (JTI) of the access token to revoke.</param>
     /// <param name="refreshToken">The refresh token string associated with the session to revoke.</param>
     /// <returns>A task that represents the asynchronous token revocation operation.</returns>
+    /// <exception cref="ArgumentException">Thrown when the refresh token is null, empty, or whitespace.</exception>
     Task RevokeTokensAsync(Guid userId, string jti, string refreshToken);
 }
 

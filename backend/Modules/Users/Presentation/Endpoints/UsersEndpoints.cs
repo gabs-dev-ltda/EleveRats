@@ -15,7 +15,7 @@
 // </copyright>
 
 using System;
-using EleveRats.Core.Application.Interfaces;
+using EleveRats.Core.Infra.Web.Filters;
 using EleveRats.Modules.Users.Application.Interfaces;
 using EleveRats.Modules.Users.Application.UseCases;
 using EleveRats.Modules.Users.Presentation.Contracts;
@@ -84,6 +84,7 @@ public static class UsersEndpoints
                     return Results.NoContent();
                 }
             )
+            .AddEndpointFilter<ValidationFilter<LogoutRequest>>()
             .Produces(StatusCodes.Status204NoContent)
             .Produces(StatusCodes.Status401Unauthorized)
             .WithSummary("Logout User")
