@@ -21,6 +21,10 @@ namespace EleveRats.Tests.Core.Infra.Web;
 
 public class EleveRatsApplicationFactory : WebApplicationFactory<Program>
 {
+    public const string DefaultUserId = "01955e5e-5e5e-7000-8000-000000000001";
+    public const string DefaultProfileId = "01955e5e-5e5e-7000-8000-000000000002";
+    public const string DefaultOrgId = "01955e5e-5e5e-7000-8000-000000000003";
+
     internal ICacheService MockCacheService { get; } = Substitute.For<ICacheService>();
     internal ITokenService MockTokenService { get; } = Substitute.For<ITokenService>();
 
@@ -134,10 +138,10 @@ public class TestAuthHandler(
         [
             new Claim(
                 System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub,
-                System.Guid.CreateVersion7().ToString()
+                EleveRatsApplicationFactory.DefaultUserId
             ),
-            new Claim("profileId", System.Guid.CreateVersion7().ToString()),
-            new Claim("orgId", System.Guid.CreateVersion7().ToString()),
+            new Claim("profileId", EleveRatsApplicationFactory.DefaultProfileId),
+            new Claim("orgId", EleveRatsApplicationFactory.DefaultOrgId),
             new Claim(ClaimTypes.Email, "testuser@eleverats.com"),
             new Claim(
                 System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti,
