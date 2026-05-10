@@ -19,9 +19,11 @@ using EleveRats.Core;
 using EleveRats.Core.Application.Contexts;
 using EleveRats.Core.Application.Interfaces;
 using EleveRats.Core.Infra.Caching;
+using EleveRats.Core.Infra.Web.Filters;
 using EleveRats.Core.Infra.Web.Middlewares;
 using EleveRats.Modules.Users;
 using EleveRats.Modules.Users.Presentation.Endpoints;
+using FluentValidation;
 using Grafana.OpenTelemetry;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -132,6 +134,9 @@ builder.Services.AddHealthChecks();
 
 // OpenApi / Swagger
 builder.Services.AddOpenApi();
+
+// Register FluentValidation
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 WebApplication app = builder.Build();
 

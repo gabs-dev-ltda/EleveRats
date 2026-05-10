@@ -79,6 +79,8 @@ internal sealed class TokenService(
 
     public async Task RevokeTokensAsync(Guid userId, string jti, string refreshToken)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(refreshToken);
+
         // 1. Panic Button: Redis (Kills active JWT session instantly)
         string cacheKey = $"access_id:{jti}";
         await _cacheService.RemoveAsync(cacheKey);
