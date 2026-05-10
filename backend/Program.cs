@@ -122,7 +122,7 @@ builder
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
-                ClockSkew = TimeSpan.Zero, // Sem tolerância extra: o token expira exatamente quando diz
+                ClockSkew = TimeSpan.FromSeconds(30), // Pequena tolerância para dessincronização de relógios
             };
         }
     );
