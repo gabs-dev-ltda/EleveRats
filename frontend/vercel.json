@@ -1,5 +1,7 @@
 {
-  "buildCommand": "bun run build:vite",
-  "installCommand": "bun install",
-  "framework": "vite"
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "buildCommand": "bun run build:vite",
+    "installCommand": "bun install",
+    "framework": "vite",
+    "bunVersion": "1.x"
 }
